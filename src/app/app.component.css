@@ -1,0 +1,33 @@
+.sidenav-container {
+  display: flex;
+  height: 100vh;
+  background-color: white;
+}
+
+.sidenav {
+  color: white;
+}
+
+.top-navbar {
+  position: fixed;
+  width: calc(100% - 250px);
+  color: white;
+  padding: 10px 20px;
+  z-index: 1000;
+}
+
+.content {
+  flex: 1;
+  padding: -1px 20px 20px;
+}
+
+.overview-container {
+  min-height: 100vh;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+}

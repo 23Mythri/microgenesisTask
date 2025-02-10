@@ -1,0 +1,117 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" opened>
+    <div class="byewind-section">
+      <img src="assets/icons/userprofile.png" alt="Profile Icon" class="user-icon">
+      <span>ByeWind</span>
+    </div>
+
+    <mat-nav-list>
+      <ul class="custom-list">
+        <li>Overview</li>
+        <li>Projects</li>
+      </ul>
+      
+      <h6 class="section-header">Dashboards</h6>
+      <div class="overview-item" routerLink="/overview">
+        <img src="assets/icons/circlefilled.png" alt="circlefilled Icon" class="circlefilled">
+        <span>Overview</span>
+      </div>
+      <div class="nav-item" (click)="toggleDropdown('ecommerce')">
+        <mat-icon class="dropdown-icon" [ngClass]="{'rotate': dropdowns['ecommerce']}">keyboard_arrow_right</mat-icon>
+        <img src="assets/icons/ecomm.png" alt="ecomm Icon" class="ecomm">
+        <span>eCommerce</span>
+      </div>
+      <ul class="dropdown-list" *ngIf="dropdowns['ecommerce']">
+        <li>Orders</li>
+        <li>Products</li>
+        <li>Customers</li>
+      </ul>
+      <div class="nav-item" (click)="toggleDropdown('projects')">
+        <mat-icon class="dropdown-icon" [ngClass]="{'rotate': dropdowns['projects']}">keyboard_arrow_right</mat-icon>
+        <img src="assets/icons/project.png" alt="project Icon" class="project">
+        <span>Projects</span>
+      </div>
+      <ul class="dropdown-list" *ngIf="dropdowns['projects']">
+        <li>Active Projects</li>
+        <li>Archived Projects</li>
+        <li>New Project</li>
+      </ul>
+      <div class="nav-item" (click)="toggleDropdown('courses')">
+        <mat-icon class="dropdown-icon" [ngClass]="{'rotate': dropdowns['courses']}">keyboard_arrow_right</mat-icon>
+        <img src="assets/icons/course.png" alt="course Icon" class="course">
+        <span>Online Courses</span>
+      </div>
+      <ul class="dropdown-list" *ngIf="dropdowns['courses']">
+        <li>My Courses</li>
+        <li>Certifications</li>
+        <li>Enrollments</li>
+      </ul>
+
+
+      <h6 class="section-header">Pages</h6>
+      <div class="nav-item" (click)="toggleDropdown('userprofile')">
+        <mat-icon class="dropdown-icon" [ngClass]="{'rotate': dropdowns['userprofile']}">keyboard_arrow_right</mat-icon>
+        <img src="assets/icons/profile.png" alt="profile Icon" class="profile">
+        <span>User Profile</span>
+      </div>
+      <ul class="dropdown-list" *ngIf="dropdowns['userprofile']">
+        <li>Overview</li>
+        <li>Projects</li>
+        <li>Campaigns</li>
+        <li>Documents</li>
+        <li>Followers</li>
+      </ul>
+      <div class="nav-item" (click)="toggleDropdown('account')">
+        <mat-icon class="dropdown-icon" [ngClass]="{'rotate': dropdowns['account']}">keyboard_arrow_right</mat-icon>
+        <img src="assets/icons/account.png" alt="account Icon" class="account">
+        <span>Account</span>
+      </div>
+      <ul class="dropdown-list" *ngIf="dropdowns['account']">
+        <li>Overview</li>
+        <li>Projects</li>
+        <li>Campaigns</li>
+        <li>Documents</li>
+        <li>Followers</li>
+      </ul>
+      <div class="nav-item" (click)="toggleDropdown('corporate')">
+        <mat-icon class="dropdown-icon" [ngClass]="{'rotate': dropdowns['corporate']}">keyboard_arrow_right</mat-icon>
+        <img src="assets/icons/corporate.png" alt="corporate Icon" class="corporate">
+        <span>Corporate</span>
+      </div>
+      <ul class="dropdown-list" *ngIf="dropdowns['corporate']">
+        <li>Overview</li>
+        <li>Projects</li>
+        <li>Campaigns</li>
+        <li>Documents</li>
+        <li>Followers</li>
+      </ul>
+      <div class="nav-item" (click)="toggleDropdown('blog')">
+        <mat-icon class="dropdown-icon" [ngClass]="{'rotate': dropdowns['blog']}">keyboard_arrow_right</mat-icon>
+        <img src="assets/icons/blog.png" alt="blog Icon" class="blog">
+        <span>Blog</span>
+      </div>
+      <ul class="dropdown-list" *ngIf="dropdowns['blog']">
+        <li>Overview</li>
+        <li>Projects</li>
+        <li>Campaigns</li>
+        <li>Documents</li>
+        <li>Followers</li>
+      </ul>
+
+      <div class="nav-item" (click)="toggleDropdown('social')">
+        <mat-icon class="dropdown-icon" [ngClass]="{'rotate': dropdowns['social']}">keyboard_arrow_right</mat-icon>
+        <img src="assets/icons/social.png" alt="social Icon" class="social">
+        <span>Social</span>
+      </div>
+      <ul class="dropdown-list" *ngIf="dropdowns['social']">
+        <li>Overview</li>
+        <li>Projects</li>
+        <li>Campaigns</li>
+        <li>Documents</li>
+        <li>Followers</li>
+      </ul>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+</mat-sidenav-container>

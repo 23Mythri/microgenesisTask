@@ -1,0 +1,398 @@
+<div [class.reduced-width]="showSideNav">
+    <div class="overview-container">
+        <mat-toolbar class="top-navbar">
+            <mat-icon class="star-icon">star</mat-icon>
+            <span class="dashboard-title default-text" [class.active]="isOverviewActive"
+                (click)="navigateToDashboard()">
+                Dashboard
+            </span>
+            <span class="dashboard-title" *ngIf="showDefaultText"> / Default </span>
+            <span class="spacer"></span>
+            <div class="search-container">
+                <input type="text" placeholder="Search..." class="search-input">
+                <mat-icon class="search-icon">search</mat-icon>
+            </div>
+            <mat-icon class="icon">access_time</mat-icon>
+            <mat-icon class="icon">notifications</mat-icon>
+            <mat-icon class="icon" (click)="toggleSideNav()">menu_book</mat-icon>
+        </mat-toolbar>
+    </div>
+
+    <!-- Right Side Notification View -->
+    <div class="side-nav" *ngIf="showSideNav">
+        <h4 class="notifications-title">Notifications</h4>
+
+        <ul class="notifications-list">
+            <li>
+                <mat-icon class="notification-icon">bug_report</mat-icon>
+                <div class="notification-content">
+                    <span class="notification-text">You fixed a bug.</span>
+                    <span class="notification-time">Just now</span>
+                </div>
+            </li>
+            <li>
+                <mat-icon class="notification-icon">person</mat-icon>
+                <div class="notification-content">
+                    <span class="notification-text">New user registered.</span>
+                    <span class="notification-time">5 minutes ago</span>
+                </div>
+            </li>
+            <li>
+                <mat-icon class="notification-icon">bug_report</mat-icon>
+                <div class="notification-content">
+                    <span class="notification-text">You fixed a bug.</span>
+                    <span class="notification-time">12 hours ago</span>
+                </div>
+            </li>
+            <li>
+                <mat-icon class="notification-icon">wifi_tethering</mat-icon>
+                <div class="notification-content">
+                    <span class="notification-text">Andi Lane subscribed to you.</span>
+                    <span class="notification-time">Today, 11:59 AM</span>
+                </div>
+            </li>
+        </ul>
+
+
+        <h4 class="activities-title">Activities</h4>
+        <ul class="activities-list">
+            <li>
+                <img src="assets/activities/img1.jpg" alt="User Image" class="call-avatar">
+                <div class="activity-content">
+                    <span class="activity-text">Changed the style.</span>
+                    <span class="activity-time">Just now</span>
+                </div>
+            </li>
+            <li>
+                <img src="assets/activities/img2.jpg" alt="User Image" class="call-avatar">
+                <div class="activity-content">
+                    <span class="activity-text">Released a new version.</span>
+                    <span class="activity-time">5 minutes ago</span>
+                </div>
+            </li>
+            <li>
+                <img src="assets/activities/img3.jpg" alt="User Image" class="call-avatar">
+                <div class="activity-content">
+                    <span class="activity-text">Submitted a bug.</span>
+                    <span class="activity-time">12 hours ago</span>
+                </div>
+            </li>
+            <li>
+                <img src="assets/activities/img4.jpg" alt="User Image" class="call-avatar">
+                <div class="activity-content">
+                    <span class="activity-text">Modified A data in Page X.</span>
+                    <span class="activity-time">Today, 11:59 AM</span>
+                </div>
+            </li>
+            <li>
+                <img src="assets/activities/img5.jpg" alt="User Image" class="call-avatar">
+                <div class="activity-content">
+                    <span class="activity-text"> Deleted a page in Project X.</span>
+                    <span class="activity-time"> Feb 2, 2024</span>
+                </div>
+            </li>
+        </ul>
+        <h4 class="recent-calls-title" (click)="toggleRecentCalls()">
+            <mat-icon class="dropdown-icon" [class.open]="isRecentCallsOpen">keyboard_arrow_right</mat-icon>
+            Recent Contacts
+        </h4>
+        <ul class="recent-calls-list" *ngIf="isRecentCallsOpen">
+            <li *ngFor="let contact of recentCalls">
+                <img src="{{ contact.image }}" alt="{{ contact.name }}" class="call-avatar">
+                <span class="contact-name">{{ contact.name }}</span>
+            </li>
+        </ul>
+
+        <h4 class="recent-calls-title" (click)="toggleFavCalls()">
+            <mat-icon class="dropdown-icon" [class.open]="isFavCallsOpen">keyboard_arrow_right</mat-icon>
+            Favourite Contacts
+        </h4>
+        <ul class="recent-calls-list" *ngIf="isFavCallsOpen">
+            <li *ngFor="let call of recentCalls">
+                <img [src]="call.image" alt="User Image" class="call-avatar">
+                <span class="call-name">{{ call.name }}</span>
+            </li>
+        </ul>
+
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="overview-container">
+        <div class="over">
+            <h4>Overview</h4>
+        </div>
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-header">
+                    <i class="material-icons shopping-icon">shopping_cart</i>
+                </div>
+                <p class="amount">155K <span class="growth-text positive">+22%</span></p>
+                <p class="title">Total Orders</p>
+                <p class="title grey-bg">Last 4 Months</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="material-icons shopping-iconbag">shopping_bag</i>
+                </div>
+                <p class="amount">$13.4K <span class="growth-text positive">+38^</span></p>
+                <p class="title">Total Sales</p>
+                <p class="title grey-bg">Last Six Month</p>
+            </div>
+            <div class="card">
+                <p class="amount">$88.5K <span class="growth-text positivered">-18%</span></p>
+                <p class="title">Total Profit</p>
+                <div class="progress-bars-container">
+                    <div class="progress-barcol">
+                        <div class="progress red" style="width: 60%;"></div>
+                        <div class="progress black" style="width: 60%;"></div>
+                    </div>
+                    <div class="progress-barcol">
+                        <div class="progress red" style="width: 35%;"></div>
+                        <div class="progress black" style="width: 35%;"></div>
+                    </div>
+                    <div class="progress-barcol">
+                        <div class="progress red" style="width: 45%;"></div>
+                        <div class="progress black" style="width: 45%;"></div>
+                    </div>
+                    <div class="progress-barcol">
+                        <div class="progress red" style="width: 35%;"></div>
+                        <div class="progress black" style="width: 35%;"></div>
+                    </div>
+                    <div class="progress-barcol">
+                        <div class="progress red" style="width: 40%;"></div>
+                        <div class="progress black" style="width: 40%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="amoun-card">$27.9K <span class="growthtext-amount positive">+16%</span></span>
+                </div>
+                <div>
+                    <p class="titleorder">Total Orders</p>
+                </div>
+                <div class="circle-chart">
+                    <div class="slice slice-1"></div>
+                    <div class="slice slice-2"></div>
+                    <div class="slice slice-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="overview-containergraph">
+        <div class="cards-container">
+            <div class="cardgraph first-card">
+                <div class="tabs">
+                    <button [class.active]="selectedTab === 'users'" (click)="setTab('users')">Total Users</button>
+                    <button [class.active]="selectedTab === 'projects'" (click)="setTab('projects')">Total
+                        Projects</button>
+                    <button [class.active]="selectedTab === 'status'" (click)="setTab('status')">Operating
+                        Status</button>
+                </div>
+                <canvas #chartCanvas></canvas>
+
+            </div>
+            <div class="cardgraph small-card">
+                <h5 class="traffic">Traffic by Website</h5>
+
+                <div class="traffic-source">
+                    <span class="website-name">Google</span>
+                    <div class="progress-bar">
+                        <div class="progress black" style="width: 35%;"></div>
+                        <div class="progress grey" style="width: 35%;"></div>
+                        <div class="progress light-grey" style="width: 35%;"></div>
+                    </div>
+                </div>
+
+                <div class="traffic-source">
+                    <span class="website-name">YouTube</span>
+                    <div class="progress-bar">
+                        <div class="progress black" style="width: 60%;"></div>
+                        <div class="progress grey" style="width: 25%;"></div>
+                        <div class="progress light-grey" style="width: 15%;"></div>
+                    </div>
+                </div>
+
+                <div class="traffic-source">
+                    <span class="website-name">Instagram</span>
+                    <div class="progress-bar">
+                        <div class="progress black" style="width: 50%;"></div>
+                        <div class="progress grey" style="width: 30%;"></div>
+                        <div class="progress light-grey" style="width: 20%;"></div>
+                    </div>
+                </div>
+
+                <div class="traffic-source">
+                    <span class="website-name">Pinterest</span>
+                    <div class="progress-bar">
+                        <div class="progress black" style="width: 40%;"></div>
+                        <div class="progress grey" style="width: 35%;"></div>
+                        <div class="progress light-grey" style="width: 25%;"></div>
+                    </div>
+                </div>
+
+                <div class="traffic-source">
+                    <span class="website-name">Facebook</span>
+                    <div class="progress-bar">
+                        <div class="progress black" style="width: 65%;"></div>
+                        <div class="progress grey" style="width: 25%;"></div>
+                        <div class="progress light-grey" style="width: 10%;"></div>
+                    </div>
+                </div>
+
+                <div class="traffic-source">
+                    <span class="website-name">Twitter</span>
+                    <div class="progress-bar">
+                        <div class="progress black" style="width: 55%;"></div>
+                        <div class="progress grey" style="width: 30%;"></div>
+                        <div class="progress light-grey" style="width: 15%;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="overview-containerreview">
+        <div class="cards-container ">
+            <div class="card first-cardreview">
+                <img src="assets/arrow.jpg" alt="User Image" class="call-avatarreview">
+                <h4 class="custom">
+                    Customer Reviews
+                </h4>
+                <span class="message">Messages</span>
+                <div class="task-list">
+                    <div class="review-item" *ngFor="let task of reviews">
+                        <div class="task-header">
+                            <span class="task-title">{{ task.name }}</span>
+                            <span class="review-time">{{ task.time }}</span>
+                            <span class="review-rating">⭐ {{task.rating}}</span>
+                        </div>
+                        <label class="task-label">{{ task.message }}</label>
+                    </div>
+                </div>
+                <div class="see-all">
+                    <h4 class="see_all">SEE ALL Reviews ></h4>
+                </div>
+            </div>
+            <div class="card first-cardreview">
+                <img src="assets/arrow.jpg" alt="User Image" class="call-avatarreview">
+                <h4 class="custom">
+                    Spendings
+                </h4>
+                <span class="message">Payments</span>
+                <div class="task-list">
+                    <div class="pie-chart-container">
+                        <ngx-charts-pie-chart [view]="view" [results]="pieData" [scheme]="colorScheme" [doughnut]="true"
+                            (mouseOver)="onMouseOver($event)" (mouseLeave)="onMouseLeave()">>
+                        </ngx-charts-pie-chart>
+                        <ng-template #tooltipTemplate let-model="model">
+                            <div class="tooltip-content">
+                                <strong>{{ model.name }}</strong><br>
+                                Percentage: {{ model.value }}%<br>
+                                Amount Spent: ₹{{ model.amount }}
+                            </div>
+                        </ng-template>
+                        <div class="color-indicators">
+                            <div class="color-dot" *ngFor="let color of colorScheme.domain; let i = index">
+                                <span class="dot" [style.background]="color"></span>
+                                <span class="color-name">{{ pieData[i].name }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="see-all">
+                    <h5 class="see_all">SEE DETAILS ></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overview-containertask">
+        <div class="cards-container ">
+            <div class="card first-cardreview">
+                <h4>Tasks</h4>
+                <div class="task-list">
+                    <div class="task-item" *ngFor="let task of tasks">
+                        <div class="task-header">
+                            <input type="checkbox" [checked]="task.completed">
+                            <span class="task-title">{{ task.data }}</span>
+                        </div>
+                        <label class="task-label">{{ task.text }}</label>
+                    </div>
+                </div>
+                <div class="see-all">
+                    <h5 class="see_all">SEE ALL ></h5>
+                </div>
+            </div>
+            <div class="card first-cardreview">
+                <h5 class="chat-heading">Recent Conversations</h5>
+                <div class="chat-list">
+                    <div *ngFor="let chat of conversations; let i = index"
+                        [ngClass]="{'chat-item-left': i % 2 === 0, 'chat-item-right': i % 2 !== 0}">
+                        <div class="chat-profile">
+                            <img [src]="chat.profilePic" alt="Profile Pic" class="chat-profile-pic">
+                            <span class="chat-time">{{ chat.time }}</span>
+                        </div>
+                        <div class="chat-content">
+                            <h6 class="chat-name">{{ chat.name }}</h6>
+                            <p class="chat-message" [innerHTML]="chat.message"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="Type a message..." class="chat-textbox">
+                    <button class="send-button">Send</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="carousel-container">
+        <button mat-button (click)="prevSlide()" [disabled]="currentIndex === 0">❮</button>
+        <div class="product-grid">
+            <div class="product-card" *ngFor="let product of getVisibleProducts()">
+                <img [src]="product.image" alt="{{ product.title }}" class="product-image">
+                <p [innerHTML]="product.title">{{ product.title }}</p>
+                <p class="amountproduct">
+                    <del>${{ product.originalPrice }}</del>
+                    <span class="discounted-price">${{ product.amount }}</span>
+                </p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+
+            </div>
+        </div>
+        <button mat-button (click)="nextSlide()">❯</button>
+    </div>
+    <div class="overview-containertask">
+        <div class="cards-container">
+            <div class="cardgtabletask first-cardreview">
+                <h4 class="card-titleProduct">Products</h4>
+                <div class="table-container">
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th>Info</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of users">
+                                <td><img [src]="user.image" alt="Profile Icon" class="user-icon"> {{ user.name }}</td>
+                                <td>{{ user.date }}</td>
+                                <td>{{ user.amount }}</td>
+                                <td class="status" [ngClass]="user.status.toLowerCase()">{{ user.status }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+</div>
